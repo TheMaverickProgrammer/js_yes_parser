@@ -220,10 +220,10 @@ See [element.mjs](./src/element.mjs) for the full Yes Element API.
 Each `error` take the form `{line: Integer, error: String}` to report to users.
 
 ```js
-import { parser } from './../lib.mjs';
-import { readFileSync } from 'fs';
-const buffer = readFileSync('./example/example.mesh', 'utf-8');
-const results = parser.fromBuffer(buffer);
+import { parser } from './../lib.mjs'
+import { readFileSync } from 'fs'
+const buffer = readFileSync('./example/example.mesh', 'utf-8')
+const results = parser.fromBuffer(buffer)
 ```
 
 See the [example](./example/example.mjs) to learn how to access

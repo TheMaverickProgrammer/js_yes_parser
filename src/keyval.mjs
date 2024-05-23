@@ -4,12 +4,12 @@ export const KeyVal = function() {
         val: null,
         toString: function() {
             if(this.key == null) {
-                return `${this.val}`;
+                return `${this.val}`
             }
         
-            return `${this.key}=${this.val}`;
+            return `${this.key}=${this.val}`
         }
-    };
+    }
 
-    return data;
+    return data
 }   
