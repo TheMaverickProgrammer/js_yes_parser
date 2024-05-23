@@ -9,7 +9,7 @@ export const Element = function() {
         type: ElementTypes.STANDARD,
 
         toString() {
-            return `${this.type}${this.text} ${this._printArgs()}`;
+            return `${Glyphs.for(this.type)}${this.text} ${this._printArgs()}`;
         },
 
         setAttributes(attrs) {
@@ -425,8 +425,8 @@ export const read = function(line) {
         end = Math.min(len, idx);
     }
 
-    parser.text = line.substring(pos, end);
-    if(parser.text.length == 0) {
+    const text = line.substring(pos, end);
+    if(text.length == 0) {
         let error = ErrorTypes.EOL_MISSING_GLOBAL;
 
         if(type == ElementTypes.ATTRIBUTE) {
@@ -441,6 +441,7 @@ export const read = function(line) {
 
     parser.element = new Element();
     parser.element.type = type;
+    parser.element.text = text;
 
     // Step 4: parse remaining tokens, if any, and return results
     parser.parseTokens(line, end);

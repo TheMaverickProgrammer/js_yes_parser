@@ -210,26 +210,22 @@ If these characters are sounded by quotes (see `<RAWTOKEN>` generation),\
 then these characters can be safely used.
 
 # Getting Started
-The sjs API provides two constructors: parsing by file or parsing by string.
-These constructors require the callback function to be set via `.then(...)`.
+The js API provides a parser which reads an entire file's contents by string.
+You do not need to split the contents. The parser will do that for you.
 
-Loading by file is asynchronous and must be waited on for completion
+`YesParser.fromBuffer` will return `{elements: [], errors: []}`
+
+See [element.mjs](./src/element.mjs) for the full Yes Element API.
+
+Each `error` take the form `{line: Integer, error: String}` to report to users.
+
 ```js
-todo
-}
-
-void onComplete(List<Element> elements, List<ErrorInfo> errors) { ... }
+import { parser } from './../lib.mjs';
+import { readFileSync } from 'fs';
+const buffer = readFileSync('./example/example.mesh', 'utf-8');
+const results = parser.fromBuffer(buffer);
 ```
 
-Loading by string is synchronous and can be used immediately.
-```js
-void main() {
-todo
-}
-
-void onComplete(List<Element> elements, List<ErrorInfo> errors) { ... }
-```
-
-See the [example]() to learn how to access
-element types and their data from a [mesh file format](./example/example.mesh)
-which uses the YES scriplet spec.
+See the [example](./example/example.mjs) to learn how to access
+element types and their data from an example
+[mesh file format](./example/example.mesh) which uses the YES scriplet spec.

@@ -1,4 +1,4 @@
-import { parser, ErrorTypes } from './../lib.mjs';
+import { YesParser, ErrorTypes } from './../lib.mjs';
 import { readFileSync } from 'fs';
 
 // This example shows how to print the contents from the parser
@@ -29,11 +29,8 @@ const unhandledException = function(error) {
 // This example shows how to parse from a string buffer
 // read from a file.
 try {
-    const results = parser
-        .fromBuffer(
-            readFileSync('./example/example.mesh', 'utf-8')
-        );
-
+    const buffer = readFileSync('./example/example.mesh', 'utf-8');
+    const results = YesParser.fromBuffer(buffer);
     printAll(results);
 } catch (err) {
     unhandledException(err);

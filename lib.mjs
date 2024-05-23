@@ -1,7 +1,7 @@
 import {read} from './src/element.mjs'
 import {ElementTypes} from './src/enums.mjs'
 
-export const parser = {
+export const YesParser = {
     _lineCount: 0,
     _pendingAttrs: [],
     _elements: [],

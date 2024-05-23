@@ -25,6 +25,20 @@ export const Glyphs = makeIterableEnum({
     SPACE: " ",
     COMMA: ",",
     QUOTE: "\"",
+    for(type) {
+        switch(type) {
+            case ElementTypes.GLOBAL:
+                return Glyphs.BANG;
+            case ElementTypes.ATTRIBUTE:
+                return Glyphs.AT;
+            case ElementTypes.COMMENT:
+                return Glyphs.HASH;
+            default:
+                /* fall-throught */
+        }
+    
+        return ''; // unknown or standard
+    }
 });
 
 export const ErrorTypes = makeIterableEnum({
