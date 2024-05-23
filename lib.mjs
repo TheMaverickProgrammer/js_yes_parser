@@ -7,16 +7,17 @@ export const parser = {
     _elements: [],
     _errors: [],
 
-    fromBuffer: async function(strBuffer) {
-        strBuffer.split(/\r?\n/).handleLine(_handleLine);
+    fromBuffer(strBuffer) {
+        strBuffer.split(/\r?\n/).forEach((line) => this._handleLine(line));
+        return {elements: this._elements, errors: this._errors};
     },
 
-    _handleLine: function(line) {
+    _handleLine(line) {
         this._lineCount++;
-        const p = read(this._lineCount, line);
+        const p = read(line);
 
         if(p.error != null) {
-            this._errors.push({line: _lineCount, error: p.error});
+            this._errors.push({line: this._lineCount, error: p.error});
             return;
         }
 
@@ -35,3 +36,7 @@ export const parser = {
         this._elements.push(p.element);
     }
 }
+
+export * from './src/enums.mjs';
+export * from './src/element.mjs';
+export * from './src/keyval.mjs';

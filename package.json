@@ -4,8 +4,11 @@
   "description": "Official YES standard parser for js",
   "main": "lib.mjs",
   "scripts": {
-    "test": "npm example/example.mjs"
+    "test": "node ./example/example.mjs"
   },
   "author": "https://github.com/TheMaverickProgrammer",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
 }

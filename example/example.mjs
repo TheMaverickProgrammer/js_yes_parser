@@ -1,28 +1,40 @@
 import { parser, ErrorTypes } from './../lib.mjs';
-const fs = require('fs');
+import { readFileSync } from 'fs';
 
-parser
-    .fromBuffer(fs.readFileSync('example.mesh', 'utf-8'))
-    .then(printAll, unhandledException);
-
+// This example shows how to print the contents from the parser
 const printAll = function(results) {
     const {elements, errors} = results;
 
-    for(const e of elements) {
-        for(const a of e.attributes) {
-            console.log(a);
+    for(const el of elements) {
+        for(const a of el.attributes) {
+            console.log(a.toString());
         }
-        console.log(e);
+        console.log(el.toString());
     }
 
     // Print errors with line numbers, if any
-    for(const e of errors) {
+    for(const err of errors) {
         // Do not report empty lines (new lines)
-        if(e.type == ErrorTypes.EOL_NO_DATE) continue;
+        if(err.type == ErrorTypes.EOL_NO_DATE) continue;
 
-        console.log(`Error: ${e}`);
+        console.log(`Error: ${err}`);
     }
 }
+
+// Print unhandled exceptions thrown during parsing
 const unhandledException = function(error) {
     console.error(`Unhandled Exception thrown: ${error}`);
+}
+
+// This example shows how to parse from a string buffer
+// read from a file.
+try {
+    const results = parser
+        .fromBuffer(
+            readFileSync('./example/example.mesh', 'utf-8')
+        );
+
+    printAll(results);
+} catch (err) {
+    unhandledException(err);
 }

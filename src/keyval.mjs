@@ -1,12 +1,15 @@
-export const KeyVal = {
-    key: null,
-    value: null
+export const KeyVal = function() {
+    const data = {
+        key: null,
+        val: null,
+        toString: function() {
+            if(this.key == null) {
+                return `${this.val}`;
+            }
+        
+            return `${this.key}=${this.val}`;
+        }
+    };
+
+    return data;
 }   
-
-KeyVal.prototype.toString = function(self) {
-    if(self.key == null) {
-        return `${value}`;
-    }
-
-    return `${key}=${val}`;
-}
