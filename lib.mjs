@@ -29,7 +29,7 @@ export const parser = {
                 p.element.setAttributes(this._pendingAttrs);
                 this._pendingAttrs = [];
                 break;
-            case _:
+            default:
                 /* fall-through */
         }
 

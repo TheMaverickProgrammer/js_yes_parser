@@ -370,7 +370,7 @@ export const read = function(line) {
             continue;
         }
 
-        const idx = Glyphs.values.indexOf(e => e == line[pos]);
+        const idx = Glyphs.values.indexOf(line[pos]);
 
         // Standard element found
         if(idx == -1) {
@@ -388,7 +388,6 @@ export const read = function(line) {
                     parser.element = new Element();
                     parser.element.text = line.substring(pos+1);
                     parser.element.type = ElementTypes.COMMENT;
-                    console.log(ElementTypes.COMMENT);
                     return parser;
                 }
             case Glyphs.AT:
@@ -407,7 +406,7 @@ export const read = function(line) {
                 type = ElementTypes.GLOBAL;
                 pos++;
                 continue;
-            case _:
+            default:
                 /* intentional fall-through */
         }
 
