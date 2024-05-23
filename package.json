@@ -1,0 +1,11 @@
+{
+  "name": "yes_parser",
+  "version": "1.0.0",
+  "description": "Official YES standard parser for js",
+  "main": "lib.mjs",
+  "scripts": {
+    "test": "npm example/example.mjs"
+  },
+  "author": "https://github.com/TheMaverickProgrammer",
+  "license": "ISC"
+}
