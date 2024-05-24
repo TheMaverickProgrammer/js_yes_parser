@@ -19,7 +19,7 @@ end-users to make their additions to **YOUR** elements.
 - [Getting Started](#getting-started)
 
 ## License
-This project is licensed under the [Common Development and Distribution License (CDDL)](https://github.com/TheMaverickProgrammer/js_yes_parser/blob/master/LICENSE.md). 
+This project is licensed under the [Common Development and Distribution License (CDDL)](https://github.com/TheMaverickProgrammer/js_yes_parser/blob/master/legal/LICENSE.md). 
 
 ## Specification
 ### Elements
