@@ -13,7 +13,7 @@ export const ElementTypes = makeIterableEnum({
     STANDARD: 'standard',
     GLOBAL: 'global',
     COMMENT: 'comment',
-    ATTRIBUTE: 'attribute'
+    ATTRIBUTE: 'attribute',
 })
 
 export const Glyphs = makeIterableEnum({
@@ -38,7 +38,7 @@ export const Glyphs = makeIterableEnum({
         }
     
         return '' // unknown or standard
-    }
+    },
 })
 
 export const ErrorTypes = makeIterableEnum({
@@ -49,5 +49,5 @@ export const ErrorTypes = makeIterableEnum({
     EOL_MISSING_ATTRIBUTE: 'Missing attribute identifier (EOL).',
     EOL_MISSING_GLOBAL: 'Missing global identifier (EOL).',
     UNTERMINATED_QUOTE: 'Missing end quote in expression.',
-    RUNTIME: 'Unexpected runtime error.' // Reserved for misc. parsing issues
+    RUNTIME: 'Unexpected runtime error.', // Reserved for misc. parsing issues
 })

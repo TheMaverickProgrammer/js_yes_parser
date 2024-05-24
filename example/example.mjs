@@ -17,7 +17,7 @@ const printAll = function(results) {
         // Do not report empty lines (new lines)
         if(err.type == ErrorTypes.EOL_NO_DATA) continue
 
-        console.log(`Error: ${err}`)
+        console.log(`Error: ${err.type}`)
     }
 }
 
