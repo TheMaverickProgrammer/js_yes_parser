@@ -29,7 +29,7 @@ export const Element = function() {
 
         upsert(keyval) {
             const idx = 
-                this.args.indexOf(
+                this.args.findIndex(
                     e => e.key != null 
                     && e.key.toLowerCase() == keyval.key.toLowerCase()
                 )
@@ -46,7 +46,7 @@ export const Element = function() {
 
         hasKey(key) {
             const idx = 
-                this.args.indexOf(
+                this.args.findIndex(
                     e => e.key.toLowerCase() == key.toLowerCase()
                 )
             return idx > -1
@@ -55,7 +55,7 @@ export const Element = function() {
         hasKeys(keyList) {
             for(const key of keyList) {
                 const idx = 
-                    this.args.indexOf(
+                    this.args.findIndex(
                         e => e.key.toLowerCase() == key.toLowerCase()
                     )
                 if(idx == -1) return false
@@ -66,7 +66,7 @@ export const Element = function() {
 
         getKeyValue(key, or) {
             const idx = 
-                this.args.indexOf(
+                this.args.findIndex(
                     e => e.key.toLowerCase() == key.toLowerCase()
                 )
 
