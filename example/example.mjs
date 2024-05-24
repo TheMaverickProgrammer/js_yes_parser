@@ -15,7 +15,7 @@ const printAll = function(results) {
     // Print errors with line numbers, if any
     for(const err of errors) {
         // Do not report empty lines (new lines)
-        if(err.type == ErrorTypes.EOL_NO_DATE) continue
+        if(err.type == ErrorTypes.EOL_NO_DATA) continue
 
         console.log(`Error: ${err}`)
     }
