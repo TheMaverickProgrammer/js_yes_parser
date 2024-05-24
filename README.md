@@ -5,6 +5,7 @@ They can be extended further by use of attributes which allow **YOUR**\
 end-users to make their additions to **YOUR** elements.
 
 - [`YES` Script](#yes-script)
+  - [License](#license)
   - [Specification](#specification)
     - [Elements](#elements)
       - [Examples](#examples)
@@ -16,6 +17,9 @@ end-users to make their additions to **YOUR** elements.
     - [Grammar](#grammar)
       - [Reserved Characters](#reserved-characters)
 - [Getting Started](#getting-started)
+
+## License
+This project is licensed under the [Common Development and Distribution License (CDDL)](https://github.com/TheMaverickProgrammer/js_yes_parser/blob/master/LICENSE.md). 
 
 ## Specification
 ### Elements
