@@ -103,6 +103,7 @@ export class Element {
     //
 
     #findKey(key) {
+        if(key == null) return -1
         return this.args.findIndex(
             e => e.key != null && e.key.toLowerCase() == key.toLowerCase()
         )
@@ -166,12 +167,12 @@ export class ElementParser {
             return
         }
 
-        const end = this.#evaluateDelimeter(input, start)
+        const end = this.#evaluateDelimiter(input, start)
         this.#evaluateToken(input, start, end)
         return end
     }
 
-    #evaluateDelimeter(input, start) {
+    #evaluateDelimiter(input, start) {
         let quoted = false // Finds matching end-quotes
         const len = input.length
         let curr = start
@@ -180,7 +181,7 @@ export class ElementParser {
         while(curr < len) {
             let quotePos = input.indexOf(Glyphs.QUOTE, curr)
             if(quoted) {
-                if(quotPos == -1) {
+                if(quotePos == -1) {
                     this.error = ErrorTypes.UNTERMINATED_QUOTE
                     return len
                 }
@@ -217,8 +218,8 @@ export class ElementParser {
         // Step 2: determine delimiter if not yet set
         // by scanning white spaces in search for the first comma
         // or falling back to spaces if not found.
-        let space = -1, equal = -1, quote = -1, prev = curr
-        while(this.delimeter == Delimiters.UNSET && curr < len) {
+        let space = -1, equal = -1, quote = -1
+        while(this.delimiter == Delimiters.UNSET && curr < len) {
             const c = input[curr]
             const isComma = Glyphs.COMMA == c
             const isSpace = Glyphs.SPACE == c
@@ -238,8 +239,7 @@ export class ElementParser {
                 equal = curr
             }
 
-            // Quick hack to an oversight:
-            // https://github.com/TheMaverickProgrammer/dart_yes_parser/blob/master/lib/src/element_parser.dart#L259
+            // Ensure quotes are toggled, if token was reached
             if(isQuote) {
                 if(quote == -1) {
                     quote = curr
@@ -251,31 +251,22 @@ export class ElementParser {
             curr++
         }
 
-        // Case: EOL with not delimeter found
-        if(this.delimeter == Delimiters.UNSET) {
+        // Case: EOL with not delimiter found
+        if(this.delimiter == Delimiters.UNSET) {
             // No space token found.
             // Nothing to parse. Abort.
             if(space == -1) {
                 return len
             }
 
-            // Take advantage of the fact comma delimiters
-            // allow for spaces around the equal symbol
-            // NOTE: quote must be terminated where equal pos was.
-            if (equal > -1 && quote == -1) {
-                this.#setDelimiterType(Delimiters.COMMA)
-                // Go back to the starting point
-                curr = prev
-            } else {
-                this.#setDelimiterType(Delimiters.SPACE)
-                // Go back to the first space token
-                curr = space
-            }
+            this.#setDelimiterType(Delimiters.SPACE)
+            // Go back to the first space token
+            curr = space
         }
 
-        // Step 3: use delimeter type to find the next end pos
+        // Step 3: use delimiter type to find the next end pos
         // which will result in the range [start,end] to be next token
-        const idx = input.indexOf(this.delimeter, start)
+        const idx = input.indexOf(this.delimiter, start)
         if(idx == -1) {
             // Possibly last keyval token. EOL.
             return len
@@ -307,12 +298,12 @@ export class ElementParser {
     }
 
     #setDelimiterType(type) {
-        if(this.delimeter == Delimiters.UNSET) {
-            this.delimeter = type
+        if(this.delimiter == Delimiters.UNSET) {
+            this.delimiter = type
             return true
         }
 
-        return this.delimeter == type
+        return this.delimiter == type
     }
 }
 
