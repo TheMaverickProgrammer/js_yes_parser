@@ -195,7 +195,7 @@ export class ElementParser {
             const commaPos = input.indexOf(Glyphs.COMMA, curr)
 
             if(quotePos > -1 && quotePos < spacePos && quotePos < commaPos) {
-                quote = true
+                quoted = true
                 start = quotePos
                 curr = start + 1
                 continue
