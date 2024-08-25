@@ -1,6 +1,6 @@
 {
   "name": "yes_parser",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Official YES standard parser for js",
   "main": "lib.mjs",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "https://github.com/TheMaverickProgrammer",
   "license": "ISC",
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "yes_parser": "file:"
   }
 }

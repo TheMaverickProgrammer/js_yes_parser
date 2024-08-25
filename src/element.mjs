@@ -164,7 +164,7 @@ export class ElementParser {
         }
 
         if(start >= len) {
-            return
+            return len
         }
 
         const end = this.#evaluateDelimiter(input, start)
