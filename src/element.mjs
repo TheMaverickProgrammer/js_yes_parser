@@ -194,7 +194,15 @@ export class ElementParser {
             const spacePos = input.indexOf(Glyphs.SPACE, curr)
             const commaPos = input.indexOf(Glyphs.COMMA, curr)
 
-            if(quotePos > -1 && quotePos < spacePos && quotePos < commaPos) {
+            if(spacePos > -1 && quotePos > spacePos) {
+                quotePos = -1
+            }
+
+            if(commaPos > -1 && quotePos > commaPos) {
+                quotePos = -1
+            }
+
+            if(quotePos > -1) {
                 quoted = true
                 start = quotePos
                 curr = start + 1
@@ -386,7 +394,7 @@ export const read = function(line) {
 
     const text = line.substring(pos, end)
     if(text.length == 0) {
-        let error = ErrorTypes.EOL_MISSING_GLOBAL
+        let error = ErrorTypes.EOL_MISSING_ELEMENT
 
         if(type == ElementTypes.ATTRIBUTE) {
             error = ErrorTypes.EOL_MISSING_ATTRIBUTE
