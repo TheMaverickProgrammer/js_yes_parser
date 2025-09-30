@@ -25,6 +25,8 @@ export const Glyphs = makeIterableEnum({
     SPACE: ' ',
     COMMA: ',',
     QUOTE: '\"',
+    BACKSLASH: '\\',
+    TAB: '\t',
     for(type) {
         switch(type) {
             case ElementTypes.GLOBAL:
@@ -34,7 +36,7 @@ export const Glyphs = makeIterableEnum({
             case ElementTypes.COMMENT:
                 return Glyphs.HASH
             default:
-                /* fall-throught */
+                /* fall-through */
         }
     
         return '' // unknown or standard

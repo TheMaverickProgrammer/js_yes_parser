@@ -4,12 +4,13 @@
   "description": "Official YES standard parser for js",
   "main": "lib.mjs",
   "scripts": {
-    "test": "node ./example/example.mjs"
+    "example": "node ./example/example.mjs"
   },
-  "author": "https://github.com/TheMaverickProgrammer",
-  "license": "ISC",
+  "author": "Maverick Peppers",
+  "git repository": "https://github.com/TheMaverickProgrammer/js_yes_parser",
+  "keywords": [],
+  "license": "CDDL-1.1",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "yes_parser": "file:"
+    "fs": "^0.0.1-security"
   }
 }
