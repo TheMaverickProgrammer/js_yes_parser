@@ -33,6 +33,10 @@ const results = parser.fromBuffer(buffer, literals)
 See the [example](./example/example.mjs) to learn how to access element data from an example
 [mesh file format](./example/example.mesh) which uses the YES scriplet spec.
 
+```sh
+npm run example
+```
+
 ## Tests
 Node tests are supplied to ensure the parser is spec-compliant and prevent regressions in future updates.
 

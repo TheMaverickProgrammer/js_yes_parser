@@ -10,7 +10,5 @@
   "git repository": "https://github.com/TheMaverickProgrammer/js_yes_parser",
   "keywords": [],
   "license": "CDDL-1.1",
-  "dependencies": {
-    "fs": "^0.0.1-security"
-  }
+  "dependencies": {}
 }
